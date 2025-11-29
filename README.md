@@ -1,2 +1,6 @@
 # EXPLORING-NYC-PUBLIC-SCHOOL-TEST-RESULT-SCORES-USING-PYTHON
-I examined average reading, math, and writing scores, compared performance across schools, and answered three core analytical questions related to citywide SAT outcomes. The analysis highlights how data can support education policy, school improvement, and informed decision-making for students and parents.
+Finished a data analysis project exploring SAT performance across New York City public high schools 📊📝
+
+Using the schools.csv dataset, I analyzed reading, math, and writing scores (each out of 800) to uncover patterns in school performance and answer key questions relevant to policymakers, educators, and families.
+
+Projects like this remind me how impactful data can be in shaping educational decisions and helping communities better understand student outcomes.
