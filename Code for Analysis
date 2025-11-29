@@ -1,0 +1,38 @@
+# Re-run this cell 
+import pandas as pd
+
+# Read in the data
+schools = pd.read_csv("schools.csv")
+
+# Preview the data
+print(schools.head(3))
+
+# QUESTION = Which NYC schools have the best math results?
+# Sort the schools by average_math in descending order and get the school names
+df = pd.DataFrame(schools)
+best_math_schools = df[df["average_math"] >= 0.8 * 800]
+best_math_schools = best_math_schools[["school_name", "average_math"]].sort_values(by="average_math", ascending=False)
+
+#NYC schools that have the best math results
+print(best_math_schools)
+
+# QUESTION = What are the top 7 performing schools based on the combined SAT scores?
+# Sum across colums to get the total SAT scores
+schools["total_SAT"]= df[["average_math","average_reading","average_writing"]].sum(axis=1)
+
+# Top 7 Schools
+top_10_schools = schools[["school_name", "total_SAT"]].sort_values(by="total_SAT", ascending=False).head(7)
+print(top_7_schools)
+
+#QUESTION = Which single borough has the largest standard deviation in the combined SAT score?
+# Group by borough and calculate the standard deviation of total_SAT
+grouped = df.groupby("borough").agg(
+    num_schools=("school_name", "count"),
+    average_SAT=("total_SAT", "mean"),
+    std_SAT=("total_SAT", "std")
+).reset_index()
+
+# Get borough with highest standard deviation in total_SAT
+largest_std_dev = grouped.sort_values(by="std_SAT", ascending=False).round(2).head(1).reset_index(drop=True)
+
+print(largest_std_dev)
